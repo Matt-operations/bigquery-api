@@ -43,6 +43,8 @@ function toNumber(val) {
 
 function toStr(val) {
   if (val === null || val === undefined) return ''
+  // BigQuery timestamps come back as objects with a `value` string property
+  if (typeof val === 'object' && val.value !== undefined) return String(val.value)
   return String(val)
 }
 
