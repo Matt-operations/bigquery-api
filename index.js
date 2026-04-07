@@ -103,7 +103,7 @@ function mapRow(row) {
     medicaidOutreachCount:        toNumber(row.medicaid_outreach_count) ?? 0,
     status:                       toStr(row.status),
     updated:                      toStr(row.updated),
-    converted:                    toStr(row.converted),
+    converted:                    toBool(row.converted) === true ? 'Yes' : 'No',
     resubmissionCount:            toNumber(row.resubmission_count) ?? 0,
     retentionAgent:               toStr(row.retention_agent),
     originalAssignedAgent:        toStr(row.original_assigned_agent),
