@@ -43,6 +43,8 @@ function toNumber(val) {
 
 function toStr(val) {
   if (val === null || val === undefined) return ''
+  // BigQuery DATE/TIMESTAMP objects have a value property
+  if (typeof val === 'object' && val.value !== undefined) return String(val.value)
   return String(val)
 }
 
@@ -155,7 +157,7 @@ function mapRow(row) {
 
 // ─── Date range filter (applied in SQL for efficiency) ────────────────────────
 function dateFilter(range) {
-  const field = 'created'
+  const field = 'COALESCE(Created, created)'
   switch (range) {
     case '7d':  return `DATE(${field}) >= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)`
     case '30d': return `DATE(${field}) >= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)`
