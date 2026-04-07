@@ -144,14 +144,90 @@ function mapRow(row) {
     tldStatus:                    toStr(row.tld_status),
     postalCode:                   toStr(row.postal_code),
     sfFormReceived:               toStr(row.sf_form_received),
-    documentCollectionResolved:   toStr(row.document_collection_resolved),
     outreachSentCount:            toNumber(row.outreach_sent_count) ?? 0,
-    sfRemarketingResolved:        toStr(row.sf_remarketing_resolved),
-    oePremiumIncrease25kResolved: toStr(row.oe_premium_increase_25k_resolved),
-    sfRemarketingInboundCall:     toStr(row.sf_remarketing_inbound_call),
-    sfRemarketingTriggerLinkClicked: toStr(row.sf_remarketing_trigger_link_clicked),
-    documentCollectionFormReceived: toStr(row.document_collection_form_received),
     opportunityDistribution:      toStr(row.opportunity_distribution),
+
+    // ─── Document Collection ─────────────────────────────────────────────────
+    documentCollectionResolved:            toStr(row.document_collection_resolved),
+    documentCollectionFormReceived:        toStr(row.document_collection_form_received),
+    documentCollectionResponseReceived:    toStr(row.document_collection_response_received),
+    documentCollectionTriggerLinkClicked:  toStr(row.document_collection_trigger_link_clicked),
+    documentCollectionInboundCall:         toStr(row.document_collection_inbound_call),
+    documentCollectionOutreachSentCount:   toNumber(row.document_collection_outreach_sent_count) ?? 0,
+    documentCollectionOutreachSentDate:    toStr(row.document_collection_outreach_sent_date),
+    documentCollectionSplit:               toStr(row.document_collection_split),
+
+    // ─── SF Remarketing ──────────────────────────────────────────────────────
+    sfRemarketingResolved:            toStr(row.sf_remarketing_resolved),
+    sfRemarketingFormReceived:        toStr(row.sf_remarketing_form_received),
+    sfRemarketingResponseReceived:    toStr(row.sf_remarketing_response_received),
+    sfRemarketingTriggerLinkClicked:  toStr(row.sf_remarketing_trigger_link_clicked),
+    sfRemarketingInboundCall:         toStr(row.sf_remarketing_inbound_call),
+    sfRemarketingOutreachSentCount:   toNumber(row.sf_remarketing_outreach_sent_count) ?? 0,
+    sfRemarketingOutreachSentDate:    toStr(row.sf_remarketing_outreach_sent_date),
+    sfRemarketingSplit:               toStr(row.sf_remarketing_split),
+    sfOutreachSentCount:              toNumber(row.sf_outreach_sent_count) ?? 0,
+    sfOutreachSentDate:               toStr(row.sf_outreach_sent_date),
+    sfSplit:                          toStr(row.sf_split),
+
+    // ─── Landline ─────────────────────────────────────────────────────────────
+    landlineResolved:            toStr(row.landline_resolved),
+    landlineFormReceived:        toStr(row.landline_form_received),
+    landlineResponseReceived:    toStr(row.landline_response_received),
+    landlineTriggerLinkClicked:  toStr(row.landline_trigger_link_clicked),
+    landlineInboundCall:         toStr(row.landline_inbound_call),
+    landlineOutreachSentCount:   toNumber(row.landline_outreach_sent_count) ?? 0,
+    landlineOutreachSentDate:    toStr(row.landline_outreach_sent_date),
+    landlineSplit:               toStr(row.landline_split),
+
+    // ─── Lander Mismatch ─────────────────────────────────────────────────────
+    landerMismatchResolved:            toStr(row.lander_mismatch_resolved),
+    landerMismatchResponseReceived:    toStr(row.lander_mismatch_response_received),
+    landerMismatchTriggerLinkClicked:  toStr(row.lander_mismatch_trigger_link_clicked),
+    landerMismatchInboundCall:         toStr(row.lander_mismatch_inbound_call),
+    landerMismatchOutreachSentCount:   toNumber(row.lander_mismatch_outreach_sent_count) ?? 0,
+    landerMismatchOutreachSentDate:    toStr(row.lander_mismatch_outreach_sent_date),
+    landerMismatchSplit:               toStr(row.lander_mismatch_split),
+
+    // ─── Cancelled Client ────────────────────────────────────────────────────
+    cancelledClientResolved:            toStr(row.cancelled_client_resolved),
+    cancelledClientFormReceived:        toStr(row.cancelled_client_form_received),
+    cancelledClientResponseReceived:    toStr(row.cancelled_client_response_received),
+    cancelledClientTriggerLinkClicked:  toStr(row.cancelled_client_trigger_link_clicked),
+    cancelledClientInboundCall:         toStr(row.cancelled_client_inbound_call),
+    cancelledClientOutreachSentCount:   toNumber(row.cancelled_client_outreach_sent_count) ?? 0,
+    cancelledClientOutreachSentDate:    toStr(row.cancelled_client_outreach_sent_date),
+    cancelledClientOutreachSentDate2:   toStr(row.cancelled_client_outreach_sent_date_2),
+    cancelledClientSplit:               toStr(row.cancelled_client_split),
+
+    // ─── Qualification ───────────────────────────────────────────────────────
+    qualificationResolved:            toStr(row.qualification_resolved),
+    qualificationFormReceived:        toStr(row.qualification_form_received),
+    qualificationResponseReceived:    toStr(row.qualification_response_received),
+    qualificationTriggerLinkClicked:  toStr(row.qualification_trigger_link_clicked),
+    qualificationInboundCall:         toStr(row.qualification_inbound_call),
+    qualificationOutreachSentCount:   toNumber(row.qualification_outreach_sent_count) ?? 0,
+    qualificationOutreachSentDate:    toStr(row.qualification_outreach_sent_date),
+    qualificationSplit:               toStr(row.qualification_split),
+
+    // ─── DMI ─────────────────────────────────────────────────────────────────
+    dmiPostSaleOutreachSentCount:  toNumber(row.dmi_post_sale_outreach_sent_count) ?? 0,
+    dmiPreSaleOutreachSentCount:   toNumber(row.dmi_pre_sale_outreach_sent_count) ?? 0,
+
+    // ─── AOR Recovery ────────────────────────────────────────────────────────
+    aorRecoveryOutreachSentCount:  toNumber(row.aor_recovery_outreach_sent_count) ?? 0,
+
+    // ─── Misc Retention ──────────────────────────────────────────────────────
+    medicaidRemarketing:                  toStr(row.medicaid_remarketing),
+    medicaidRemarketingOutreachSentCount: toNumber(row.medicaid_remarketing_outreach_sent_count) ?? 0,
+    premiumCollectionFormReceived:        toStr(row.premium_collection_form_received),
+    premiumCollectionOutreachSentCount:   toNumber(row.premium_collection_outreach_sent_count) ?? 0,
+    premiumCollectionOutreachSentDate:    toStr(row.premium_collection_outreach_sent_date),
+    premiumCollectionSplit:               toStr(row.premium_collection_split),
+    assistedLinkOutreachSentCount:        toNumber(row.assisted_link_outreach_sent_count) ?? 0,
+    updateSpouseDependentSsn:             toStr(row.update_spouse_dependent_ssn),
+    oeUnpaidBinderOutreachSentCount:      toNumber(row.oe_unpaid_binder_outreach_sent_count) ?? 0,
+    otherPartyOutreachSentCount:          toNumber(row.other_party_outreach_sent_count) ?? 0,
   }
 }
 
